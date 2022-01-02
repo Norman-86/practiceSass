@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  margin: 30px;
+  background-color: #008080;
+}
+
+.navigation {
+  list-style: none;
+}
+
+.navigation li {
+  display: inline-block;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,76 @@
+//reseting the css default margins and padding before writing code
+* {
+    margin: 0;
+    padding: 0;
+}
+
+//defined color variables - all the other elements can be stored in sass variables
+$color-primary: #008080;
+$color-secondary: #ffa500;
+$color-hover:#ffebcd; 
+
+//mixin - reusable peiece of code that can be applied anywhere in the app
+@mixin clearfix {
+    &::after { //pseudo element ::after clears the float to get the Nav back
+    content: "";
+    clear: both;
+    display: table;
+    }
+}
+
+//mixin that takes an urgument like in Js - whatever color is applied in the code will be parsed
+@mixin style-link-text($color) {
+    color: $color;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-left: 30px;
+}
+
+//@extend/inheritance extends the style of one element to others - should be used in related elements
+%navlink-placeholder {
+    @include style-link-text ($color-secondary);
+            &:hover{
+                color: $color-hover;
+                transition: 1s;
+            } 
+        }
+
+//our own sass function can use all mathematical operators
+@function add($a, $b){
+    @return $a + $b;
+}
+
+nav {
+    margin:add(20, 10)*1px; //function equal to margin of 30px
+    background-color:$color-primary;
+    height: 60px; //centers the nav links vertically. 
+    line-height: 60px; 
+    @include clearfix; 
+}
+
+.navigation {
+    list-style: none;
+    float: left;
+    li {
+        display: inline-block;
+        a {
+            @extend %navlink-placeholder; // the anchor tag "a" was copied into %navlink-placeholder 
+        }
+    }
+}
+
+.buttons {
+    float: right;
+}
+
+.btn-main, .btn-hot{
+        margin-right: 30px;
+        @include style-link-text($color-secondary); 
+        &:hover {
+            color: darken($color-secondary, 30%); //darken or lighten etc are inbuilt sass functions
+            @extend %navlink-placeholder; 
+          }
+    }
+

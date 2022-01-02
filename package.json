@@ -1,0 +1,17 @@
+{
+  "name": "practicesass",
+  "version": "1.0.0",
+  "description": "Basic Sass Project",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/index.scss css/style.css -w"
+  },
+  "keywords": [
+    "Sass, Scss, Mixins, Extends, Functions"
+  ],
+  "author": "Park",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^7.0.0"
+  }
+}
